@@ -1,4 +1,4 @@
-package com.dmytro.registration;
+package com.dmytro.authentication;
 
 import com.dmytro.customer.Customer;
 import com.dmytro.customer.CustomerService;
@@ -24,6 +24,6 @@ public class RegistrationController {
     @PostMapping("/register")
     public String registerCustomer(@ModelAttribute Customer customer) {
         customerService.registerNewCustomer(customer);
-        return "redirect:/login";
+        return "redirect:/hello";
     }
 }

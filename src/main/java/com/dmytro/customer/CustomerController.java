@@ -5,27 +5,27 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("api/v1/user")
-public class UserController {
+@RequestMapping("api/v1/customer")
+public class CustomerController {
     private final CustomerRepository customerRepository;
 
     @Autowired
-    public UserController(CustomerRepository customerRepository) {
+    public CustomerController(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
     @GetMapping
-    public List<User> getUser() {
+    public List<Customer> getUser() {
         return customerRepository.findAll();
     }
 
     @PostMapping
     public void addUser(@RequestBody NewCustomerRequest request) {
-        User user = new User();
-        user.setName(request.name());
-        user.setEmail(request.email());
-        user.setAge(request.age());
-        customerRepository.save(user);
+        Customer customer = new Customer();
+        customer.setName(request.name());
+        customer.setEmail(request.email());
+        customer.setAge(request.age());
+        customerRepository.save(customer);
     }
 
     @DeleteMapping("{userId}")
@@ -35,10 +35,10 @@ public class UserController {
 
     @PutMapping("{userId}")
     public void updateUser(@PathVariable("userId") Integer id, @RequestBody NewCustomerRequest request) {
-        User user = customerRepository.getById(id);
-        user.setName(request.name());
-        user.setEmail(request.email());
-        user.setAge(request.age());
-        customerRepository.save(user);
+        Customer customer = customerRepository.getById(id);
+        customer.setName(request.name());
+        customer.setEmail(request.email());
+        customer.setAge(request.age());
+        customerRepository.save(customer);
     }
 }

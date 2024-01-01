@@ -1,6 +1,6 @@
-package com.dmytro.user;
+package com.dmytro.customer;
 
-public record NewUserRequest(
+public record NewCustomerRequest(
         String name,
         String email,
         Integer age
