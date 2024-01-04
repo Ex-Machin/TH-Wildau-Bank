@@ -24,6 +24,6 @@ public class RegistrationController {
     @PostMapping("/register")
     public String registerCustomer(@ModelAttribute Customer customer) {
         customerService.registerNewCustomer(customer);
-        return "redirect:/hello";
+        return "redirect:/home";
     }
 }
