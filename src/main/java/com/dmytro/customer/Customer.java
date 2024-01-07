@@ -26,11 +26,12 @@ public class Customer {
     private String username;
     private String password;
     private Boolean enabled;
+    private double money;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Authority> authorities;
 
-    public Customer(Integer id, String name, String email, Integer age, String username, String password, Boolean enabled) {
+    public Customer(Integer id, String name, String email, Integer age, String username, String password, Boolean enabled, double money) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -38,6 +39,7 @@ public class Customer {
         this.username = username;
         this.password = password;
         this.enabled = enabled;
+        this.money = money;
     }
 
     public Customer() {}
@@ -72,6 +74,10 @@ public class Customer {
         return age;
     }
 
+    public double getMoney() {
+        return money;
+    }
+
 
     public void setId(Integer id) {
         this.id = id;
@@ -95,6 +101,7 @@ public class Customer {
         this.age = age;
     }
     public void setEnabled(Boolean enabled) {this.enabled = enabled;}
+    public void setMoney(double money) {this.money = money;}
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -106,12 +113,13 @@ public class Customer {
                 && Objects.equals(age, customer.age)
                 && Objects.equals(username, customer.username)
                 && Objects.equals(password, customer.password)
-                && Objects.equals(enabled, customer.enabled);
+                && Objects.equals(enabled, customer.enabled)
+                && Objects.equals(money, customer.money);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, username, password, email, age, enabled);
+        return Objects.hash(id, name, username, password, email, age, enabled, money);
     }
 
     @Override
@@ -124,6 +132,7 @@ public class Customer {
                 ", password='" + password + '\'' +
                 ", enabled='" + password + '\'' +
                 ", age=" + age +
+                ", money=" + money +
                 '}';
     }
 }

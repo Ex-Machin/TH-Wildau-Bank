@@ -7,5 +7,7 @@ import java.util.List;
 
 @Repository
 public interface AuthorityRepository extends JpaRepository<Authority, Long> {
-    List<Authority> findByUsername(String username);
+    default List<Authority> findByUsername(String username) {
+        return null;
+    }
 }

@@ -19,6 +19,27 @@ public class CustomerService {
     @Autowired
     private AuthorityRepository authorityRepository;
 
+    public void deductAmount(Integer accountId, double amount) {
+        Customer customer = customerRepository.findById(accountId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid account ID"));
+        if (customer.getMoney() < amount) {
+            throw new IllegalArgumentException("Insufficient funds");
+        }
+
+        double newBalance = customer.getMoney() - amount;
+        customer.setMoney(newBalance);
+        customerRepository.save(customer);
+    }
+
+    public void addAmount(Integer accountId, double amount) {
+        Customer customer = customerRepository.findById(accountId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid account ID"));
+        double newBalance = customer.getMoney() + amount;
+        customer.setMoney(newBalance);
+        customerRepository.save(customer);
+    }
+
+
     @Transactional
     public void registerNewCustomer(Customer customer) {
         // Assuming password encoding is handled elsewhere
@@ -35,6 +56,9 @@ public class CustomerService {
         Set<Authority> authorities = new HashSet<>();
         authorities.add(authority);
         customer.setAuthorities(authorities);
+
+        // Give a new customer bonus
+        customer.setMoney(300);
 
         // Save the authority
         authorityRepository.save(authority);

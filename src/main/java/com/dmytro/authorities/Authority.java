@@ -1,6 +1,7 @@
 package com.dmytro.authorities;
 
 import com.dmytro.customer.Customer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -15,6 +16,7 @@ public class Authority {
     private String username; // This should match the username in your Customer entity
     private String authority;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
