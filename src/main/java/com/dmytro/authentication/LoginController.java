@@ -27,7 +27,7 @@ public class LoginController {
         } else {
             model.addAttribute("loginError", "Invalid username or password");
             return "login";
-        }
+        } //In summary, this method handles a login request, attempts to authenticate the provided username and password using a service (customerService), and redirects the user to the home page if successful. If the authentication fails, it adds an error message attribute to the model and returns to the login page for another attempt.
     }
 
 }

@@ -29,7 +29,7 @@ public class CustomerService {
         double newBalance = customer.getMoney() - amount;
         customer.setMoney(newBalance);
         customerRepository.save(customer);
-    }
+    } //In summary, this method deducts a specified amount from a customer's account balance, performing necessary checks for the validity of the account ID and the sufficiency of funds. If successful, it updates the customer's balance in the repository.
 
     public void addAmount(Integer accountId, double amount) {
         Customer customer = customerRepository.findById(accountId)
@@ -37,7 +37,7 @@ public class CustomerService {
         double newBalance = customer.getMoney() + amount;
         customer.setMoney(newBalance);
         customerRepository.save(customer);
-    }
+    } // In summary, this method adds a specified amount to a customer's account balance, performing necessary checks for the validity of the account ID. If successful, it updates the customer's balance in the repository.
 
 
     @Transactional

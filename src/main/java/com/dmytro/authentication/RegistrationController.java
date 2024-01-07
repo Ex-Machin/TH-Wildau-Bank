@@ -25,5 +25,5 @@ public class RegistrationController {
     public String registerCustomer(@ModelAttribute Customer customer) {
         customerService.registerNewCustomer(customer);
         return "redirect:/home";
-    }
+    } //In summary, this method handles the registration of a new customer. It receives a Customer object as a parameter, registers it using a service (customerService), and then redirects the user to the home page. The specifics of the registration process and the service logic would be implemented in the registerNewCustomer method of the customerService.
 }
