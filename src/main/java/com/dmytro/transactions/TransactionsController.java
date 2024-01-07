@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.transaction.annotation.Transactional;
 import com.dmytro.customer.CustomerService;
 
@@ -34,7 +33,7 @@ public class TransactionsController {
         } catch (Exception e) {
             // If any operation fails, the transaction will be automatically rolled back
             // Handle the exception and return a meaningful response
-            return ResponseEntity.badRequest().body("ERROR");
+            return ResponseEntity.badRequest().body("You do not have sufficient amount of funds");
         }
     }
 }
